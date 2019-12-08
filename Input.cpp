@@ -47,13 +47,14 @@ int Input::GetInteger(Output *pO) const
 
 	///TODO: implement the GetInteger function as described in Input.h file 
 	//       using function GetString() defined above and function stoi()
-	
+	string str=GetSrting(pO);
+	return std::stoi(str);
 
 
 
 	// Note: stoi(s) converts string s into its equivalent integer (for example, "55" is converted to 55)
 
-	return 0; // this line should be changed with your implementation
+	//return 0; // this line should be changed with your implementation
 }
 
 //======================================================================================//
@@ -81,17 +82,19 @@ ActionType Input::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
+				///TODO: Add cases for the other items of Design Mode
 			case ITM_ADD_LADDER: return ADD_LADDER;
 			case ITM_ADD_SNAKE: return ADD_SNAKE;
 			case ITM_ADD_CARD: return ADD_CARD;
 			case ITM_EXIT: return EXIT;
-			case ITM_SWITCH_TO_PLAY_MODE: return TO_PLAY_MODE;			
-
-				///TODO: Add cases for the other items of Design Mode
-
-
-
-
+			case ITM_SWITCH_TO_PLAY_MODE: return TO_PLAY_MODE;	
+			case ITM_COPY_CARD: return COPY_CARD;
+			case ITM_CUT_CARD: return CUT_CARD;		
+			case ITM_PASTE_CARD: return PASTE_CARD;
+			case ITM_EDIT_CARD: return EDIT_CARD;			
+			case ITM_DELETE_GAME_OBJECT: return DELETE_GAME_OBJECT;
+			case ITM_SAVE_GRID: return SAVE_GRID;
+			case ITM_OPEN_GRID: return OPEN_GRID;
 			default: return EMPTY;	// A click on empty place in toolbar
 			}
 		}
@@ -112,12 +115,28 @@ ActionType Input::GetUserAction() const
 		///TODO:
 		// perform checks similar to Design mode checks above for the Play Mode
 		// and return the corresponding ActionType
+		
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
+			int ClickedItemOrder = (x / UI.MenuItemWidth);
+			switch (ClickedItemOrder)
+			{
+			case ITM_ROLL_DICE: return ROLL_DICE;
+			case ITM_SWITCH_TO_DESIGN_MODE: return TO_DESIGN_MODE;
+			case ITM_EXIT_PLAY: return EXIT;
+			case ITM_INPUT_DICE_VALUE: return INPUT_DICE_VALUE;
+			case ITM_NEW_GAME: return NEW_GAME;
+			default: return EMPTY;	// A click on empty place in toolbar
+			}
+		}
+		//return TO_DESIGN_MODE;	// just for now ==> This should be updated
+		if ((y >= UI.ToolBarHeight) && (y < UI.height - UI.StatusBarHeight))
+		{
+			return GRID_AREA;
+		}
 
-		return TO_DESIGN_MODE;	// just for now ==> This should be updated
-
-
-
-
+		// [3] User clicks on the status bar
+		return STATUS;
 	}	
 
 }
@@ -135,11 +154,27 @@ CellPosition Input::GetCellClicked() const
 	{
 		if ( y >= UI.ToolBarHeight && y <= (UI.height - UI.StatusBarHeight))
 		{
-			///TODO: SetHCell and SetVCell of the object cellPost appropriately
+			int h, v;
+			///TODO: SetHCell and SetVCell of the object cellPos appropriately
 			//       using the coordinates x, y and the appropriate variables of the UI_Info Object (UI)
-			
-
-
+			for (int i = 0; i <= NumHorizontalCells; i++)
+			{
+				if (i*UI.CellWidth > x)
+				{
+					h = i-1;
+					break;
+				}
+			}
+			for (int i = 0; i <= NumVerticalCells; i++)
+			{
+				if (i*UI.CellHeight + UI.ToolBarHeight > y)
+				{
+					v = i-1;
+					break;
+				}
+			}
+			cellPos.SetHCell(h);
+			cellPos.SetVCell(v);
 		}
 	}
 
