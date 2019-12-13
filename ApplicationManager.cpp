@@ -6,6 +6,7 @@
 #include "AddCardAction.h"
 #include "RollDiceAction.h"
 #include "InputDiceValueAction.h"
+#include "SwitchModeAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -75,7 +76,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case TO_PLAY_MODE:
-		pOut->CreatePlayModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new SwitchModeAction(this,0); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
 	case ROLL_DICE:
@@ -89,7 +90,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case TO_DESIGN_MODE:
-		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new SwitchModeAction(this,1); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
 		

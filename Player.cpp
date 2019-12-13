@@ -87,6 +87,11 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		turnCount = 0;
 		return;
 	}
+
+	if (wallet <= 0)
+	{
+		return;
+	}
 	// 3- Set the justRolledDiceNum with the passed diceNumber
 	justRolledDiceNum = diceNumber;
 	// 4- Get the player current cell position, say "pos", and add to it the diceNumber (update the position)
@@ -98,8 +103,10 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	pGrid->UpdatePlayerCell(this,pos);
 
 	// 6- Apply() the game object of the reached cell (if any)
-	Cell CurrCell(pos);
-	(CurrCell.GetGameObject())->Apply(pGrid, this);
+	
+	if (GetCell()->GetGameObject())
+	{
+		GetCell()->GetGameObject()->Apply(pGrid, this);}
 	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
 	
 	if ((pCell->GetCellPosition()).GetCellNum() > 99)

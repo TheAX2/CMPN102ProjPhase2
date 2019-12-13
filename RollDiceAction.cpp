@@ -44,7 +44,8 @@ void RollDiceAction::Execute()
 
 		/*Cell* CurrentCell = (PlayerPtr->GetCell());
 		GameObject* gObj = (CurrentCell)->GetGameObject();
-		if (Ladder* flag = CurrentCell->HasLadder())
+		gObj->Apply(pGrid,PlayerPtr);*/
+		/*if (Ladder* flag = CurrentCell->HasLadder())
 		{
 			flag->Apply(pGrid,PlayerPtr);
 		}
@@ -55,9 +56,9 @@ void RollDiceAction::Execute()
 		else if (Card* flag = CurrentCell->HasCard())
 		{
 			flag->Apply(pGrid, PlayerPtr);
-		}
+		}*/
 		// 5- Advance the current player number of pGrid
-		pGrid->AdvanceCurrentPlayer();*/
+		pGrid->AdvanceCurrentPlayer();
 	}
 	// NOTE: the above guidelines are the main ones but not a complete set (You may need to add more steps).
 

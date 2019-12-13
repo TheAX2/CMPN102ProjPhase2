@@ -134,5 +134,7 @@ CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
 void CellPosition::AddCellNum(int addedNum)
 {
 	int newcellnumber = GetCellNum() + addedNum;
-	GetCellPositionFromNum(newcellnumber);
+	CellPosition temp = GetCellPositionFromNum(newcellnumber);
+	SetVCell(temp.VCell()) ;
+	SetHCell(temp.HCell()) ;
 }

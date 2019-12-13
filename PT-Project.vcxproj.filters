@@ -196,6 +196,12 @@
     <ClCompile Include="InputDiceValueAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="NewGameAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchModeAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -317,6 +323,12 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="InputDiceValueAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="NewGameAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchModeAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
