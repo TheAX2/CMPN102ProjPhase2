@@ -105,8 +105,8 @@ CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
 	// this is a static function (do NOT need a calling object so CANNOT use the data members of the calling object, vCell&hCell)
 
 	CellPosition position;
-	int V;
-	int H;
+	int V = -1;
+	int H = -1;
 	if (cellNum >= 1 && cellNum <= 99)
 	{
 

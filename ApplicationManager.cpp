@@ -2,8 +2,10 @@
 
 #include "Grid.h"
 #include "AddLadderAction.h"
+#include "AddSnakeAction.h"
 #include "AddCardAction.h"
 #include "RollDiceAction.h"
+#include "InputDiceValueAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -60,6 +62,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddLadderAction(this);
 		break;
 
+	case ADD_SNAKE:
+		pAct = new AddSnakeAction(this);
+		break;
+
 	case ADD_CARD:
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);
@@ -75,6 +81,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ROLL_DICE:
 		// create an object of RollDiceAction here
 		pAct = new RollDiceAction(this);
+		break;
+
+	case INPUT_DICE_VALUE:
+		
+		pAct = new InputDiceValueAction(this);
 		break;
 
 	case TO_DESIGN_MODE:

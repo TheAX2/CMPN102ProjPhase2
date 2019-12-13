@@ -30,6 +30,7 @@ public:
 	int GetWallet() const;			// a getter for the wallet
 
 	int GetTurnCount() const;		// A getter for the turnCount
+	int GetjustRolledDiceNum() const; // A: A getter for the justRolledDiceNum
 
 	///TODO: You can add setters and getters for data members here (if needed)
 
