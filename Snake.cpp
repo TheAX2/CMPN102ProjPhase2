@@ -22,9 +22,11 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
 	// 1- Print a message "You have reached a snake. Click to continue ..." and wait mouse click
+	pGrid->PrintErrorMessage("You have reached a snake. Click to continue ...");
 
 	// 2- Apply the snake's effect by moving the player to the endCellPos
 	//    Review the "pGrid" functions and decide which function can be used for that
+	pGrid->UpdatePlayerCell(pPlayer, endCellPos);
 
 }
 

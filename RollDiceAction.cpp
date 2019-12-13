@@ -2,6 +2,9 @@
 
 #include "Grid.h"
 #include "Player.h"
+#include "Ladder.h"
+#include "Snake.h"
+#include "Card.h"
 
 #include <time.h> // used to in srand to generate random numbers with different seed
 
@@ -36,8 +39,25 @@ void RollDiceAction::Execute()
 		PlayerPtr = pGrid->GetCurrentPlayer();
 		// 4- Move the currentPlayer using function Move of class player
 		PlayerPtr->Move(pGrid, diceNumber);
+
+		// A: Implementation of taking snakes and ladder and cards
+
+		/*Cell* CurrentCell = (PlayerPtr->GetCell());
+		GameObject* gObj = (CurrentCell)->GetGameObject();
+		if (Ladder* flag = CurrentCell->HasLadder())
+		{
+			flag->Apply(pGrid,PlayerPtr);
+		}
+		else if (Snake* flag = CurrentCell->HasSnake())
+		{
+			flag->Apply(pGrid, PlayerPtr);
+		}
+		else if (Card* flag = CurrentCell->HasCard())
+		{
+			flag->Apply(pGrid, PlayerPtr);
+		}
 		// 5- Advance the current player number of pGrid
-		pGrid->AdvanceCurrentPlayer();
+		pGrid->AdvanceCurrentPlayer();*/
 	}
 	// NOTE: the above guidelines are the main ones but not a complete set (You may need to add more steps).
 
