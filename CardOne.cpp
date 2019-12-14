@@ -57,8 +57,23 @@ void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 
 void CardOne::Save(ofstream& OutFile,int type,int &noofobj)
 {
-	int a = -1;
-	Card::Save(OutFile,3,a);
-	OutFile.open("save.txt", ios::app);
-	OutFile << " " << walletAmount << endl ;
+	if (type != 3)
+	{
+		if (noofobj == 0) {
+			OutFile << noofobj << endl;
+			noofobj = -1;
+		}
+	}
+	if (type == 3)
+	{
+		Card::Save(OutFile, 3, noofobj);
+		OutFile << " " << walletAmount << endl;
+	}
+	return;
+}
+
+void CardOne::Load(ifstream& InFile, Grid* pGrid)
+{
+	InFile >> walletAmount;
+
 }

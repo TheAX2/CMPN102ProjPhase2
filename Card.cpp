@@ -79,12 +79,13 @@ void Card::Load(ifstream& InFile, Grid* pGrid)
 		for (int i = 0;i < noofobj;i++)
 		{
 			int cardNum, cardPosition;
-			InFile >> cardNum;
+			InFile >> cardNum >> cardPosition;
 			Card* pCard = NULL;
 			switch (cardNum)
 			{
 			case 1:
 				pCard = new CardOne(cardPosition);
+				pCard->Load(InFile,pGrid);
 				break;
 			/*case 2:
 				pCard = new CardTwo(cardPosition);

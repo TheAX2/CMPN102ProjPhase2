@@ -46,7 +46,7 @@ void LoadGridAction::Execute()
 		pLadder->Load(InFile,pGrid);
 		Snake* pSnake = new Snake(s, e);
 		pSnake->Load(InFile, pGrid);
-		Card* pCard = new Card(s);
+		Card* pCard = new Card(s) ;
 		pCard->Load(InFile, pGrid);
 		InFile.close();
 	}
