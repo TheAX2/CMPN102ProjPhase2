@@ -20,6 +20,8 @@ public:
 
 	virtual void Save(ofstream &,int type, int& noofobj);
 
+	virtual void Load(ifstream&,Grid* pGrid);
+
 	virtual ~Ladder(); // Virtual destructor
 };
 

@@ -39,15 +39,47 @@ void Snake::Save(ofstream& OutFile, int type, int &noofobj)
 {
 	if (OutFile.is_open())
 	{
-		if (noofobj!=-1)
+		if (noofobj == 0)
 		{
 			OutFile << noofobj << endl;
 			noofobj = -1;
+			return;
 		}
 		if (type == 2) {
+			if (noofobj != -1)
+			{
+				OutFile << noofobj << endl;
+				
+				if (noofobj==0)
+				{
+					OutFile << noofobj << endl;
+					noofobj = -1;
+					return;
+				}
+				noofobj = -1;
+			}
 			CellPosition StartCell = GetPosition();
 			OutFile << StartCell.GetCellNum() << " " << endCellPos.GetCellNum() << endl;
 		}
+	}
+	return;
+}
+
+void Snake::Load(ifstream& InFile, Grid* pGrid)
+{
+	if (InFile.is_open())
+	{
+		int noofobj;
+		InFile >> noofobj;
+		for (int i = 0;i < noofobj;i++)
+		{
+			int startCell, endCell;
+			InFile >> startCell >> endCell;
+			CellPosition startPos(startCell), endPos(endCell);
+			Snake* pSnake = new Snake(startPos, endPos);
+			pGrid->AddObjectToCell(pSnake);
+		}
+
 	}
 	return;
 }

@@ -28,6 +28,8 @@ public:
 
 	virtual void Save(ofstream & OutFile, int type, int& noofobj);
 
+	virtual void Load(ifstream& InFile, Grid* pGrid);
+
 	virtual ~Card(); // A Virtual Destructor
 };
 

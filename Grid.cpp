@@ -233,9 +233,9 @@ void Grid::SaveAll(ofstream& OutFile, int type)
 {
 	
 	int noofobj = 0;
-	if (type == 1)
+	switch (type)
 	{
-		
+	case 1:
 		for (int i = NumVerticalCells - 1; i >= 0; i--)
 		{
 			for (int j = 0; j < NumHorizontalCells; j++)
@@ -247,10 +247,14 @@ void Grid::SaveAll(ofstream& OutFile, int type)
 			}
 		}
 
-	}
-	if (type == 2)
-	{
+		/*if (noofobj == 0)
+		{
+			(CellList[1][1]->GetGameObject())->Save(OutFile, type, noofobj);
+			return;
+		}*/
 
+		break;
+	case 2:
 		for (int i = NumVerticalCells - 1; i >= 0; i--)
 		{
 			for (int j = 0; j < NumHorizontalCells; j++)
@@ -262,9 +266,14 @@ void Grid::SaveAll(ofstream& OutFile, int type)
 			}
 		}
 
-	}
-	if (type == 3)
-	{
+
+		/*if (noofobj == 0)
+		{
+			(CellList[1][1]->GetGameObject())->Save(OutFile, type, noofobj);
+			return;
+		}*/
+		break;
+	case 3:
 
 		for (int i = NumVerticalCells - 1; i >= 0; i--)
 		{
@@ -277,7 +286,17 @@ void Grid::SaveAll(ofstream& OutFile, int type)
 			}
 		}
 
+
+		/*if (noofobj == 0)
+		{
+			(CellList[1][1]->GetGameObject())->Save(OutFile, type, noofobj);
+			return;
+		}*/
+
+		break;
+
 	}
+
 	for (int i = NumVerticalCells - 1; i >= 0; i--) 
 	{
 		for (int j = 0; j < NumHorizontalCells; j++) 

@@ -8,6 +8,7 @@
 #include "InputDiceValueAction.h"
 #include "SwitchModeAction.h"
 #include "SaveGridAction.h"
+#include "LoadGridAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -76,6 +77,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SAVE_GRID:
 
 		pAct = new SaveGridAction(this);
+		break;
+
+	case OPEN_GRID:
+
+		pAct = new LoadGridAction(this);
 		break;
 
 	case EXIT:

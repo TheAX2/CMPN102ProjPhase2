@@ -1,4 +1,5 @@
 #include "Card.h"
+#include "CardOne.h"
 
 
 Card::Card(const CellPosition & pos) : GameObject(pos) // sets the cell position of the GameObject
@@ -41,13 +42,25 @@ void Card::Save(ofstream& OutFile, int type, int& noofobj)
 {
 	if (OutFile.is_open())
 	{
-		if (noofobj != -1)
+		if (noofobj == 0)
 		{
 			OutFile << noofobj << endl;
 			noofobj = -1;
+			return;
 		}
 		if (type == 3)
 		{
+			if (noofobj != -1)
+			{
+				OutFile << noofobj << endl;
+
+				if (noofobj ==0)
+				{
+					noofobj = -1;
+					return;
+				}
+				noofobj = -1;
+			}
 			CellPosition CellPos = GetPosition();
 			OutFile << cardNumber << " " << CellPos.GetCellNum();
 
@@ -55,6 +68,73 @@ void Card::Save(ofstream& OutFile, int type, int& noofobj)
 	}
 	return;
 
+}
+
+void Card::Load(ifstream& InFile, Grid* pGrid)
+{
+	if (InFile.is_open())
+	{
+		int noofobj;
+		InFile >> noofobj;
+		for (int i = 0;i < noofobj;i++)
+		{
+			int cardNum, cardPosition;
+			InFile >> cardNum;
+			Card* pCard = NULL;
+			switch (cardNum)
+			{
+			case 1:
+				pCard = new CardOne(cardPosition);
+				break;
+			/*case 2:
+				pCard = new CardTwo(cardPosition);
+				break;
+			case 3:
+				pCard = new CardThree(cardPosition);
+				break;
+			case 4:
+				pCard = new CardFour(cardPosition);
+				break;
+			case 5:
+				pCard = new CardFive(cardPosition);
+				break;
+			case 6:
+				pCard = new CardSix(cardPosition);
+				break;
+			case 7:
+				pCard = new CardSeven(cardPosition);
+				break;
+			case 8:
+				pCard = new CardEight(cardPosition);
+				break;
+			case 9:
+				pCard = new CardNine(cardPosition);
+				break;
+			case 10:
+				pCard = new CardTenToFourteen(cardPosition);
+				break;
+			case 11:
+				pCard = new CardTenToFourteen(cardPosition);
+				break;
+			case 12:
+				pCard = new CardTenToFourteen(cardPosition);
+				break;
+			case 13:
+				pCard = new CardTenToFourteen(cardPosition);
+				break;
+			case 14:
+				pCard = new CardTenToFourteen(cardPosition);
+				break;*/
+
+			}
+			if (pCard)
+			{
+				pGrid->AddObjectToCell(pCard);
+			}
+		}
+
+	}
+	return;
 }
 
 Card::~Card()

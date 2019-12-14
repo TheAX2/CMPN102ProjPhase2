@@ -21,5 +21,7 @@ public:
 
 	virtual void Save(ofstream&, int type, int &noofobj);
 
+	virtual void Load(ifstream& InFile, Grid* pGrid);
+
 	virtual ~Snake(); // Virtual destructor
 };
