@@ -137,6 +137,7 @@
     <ClCompile Include="CardEight.cpp" />
     <ClCompile Include="CardFive.cpp" />
     <ClCompile Include="CardFour.cpp" />
+    <ClCompile Include="CardNine.cpp" />
     <ClCompile Include="CardOne.cpp" />
     <ClCompile Include="CardSeven.cpp" />
     <ClCompile Include="CardSix.cpp" />
@@ -206,6 +207,7 @@
     <ClInclude Include="CardEight.h" />
     <ClInclude Include="CardFive.h" />
     <ClInclude Include="CardFour.h" />
+    <ClInclude Include="CardNine.h" />
     <ClInclude Include="CardOne.h" />
     <ClInclude Include="CardSeven.h" />
     <ClInclude Include="CardSix.h" />
