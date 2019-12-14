@@ -229,6 +229,67 @@ void Grid::PrintErrorMessage(string msg)
 	pOut->ClearStatusBar();
 }
 
+void Grid::SaveAll(ofstream& OutFile, int type)
+{
+	
+	int noofobj = 0;
+	if (type == 1)
+	{
+		
+		for (int i = NumVerticalCells - 1; i >= 0; i--)
+		{
+			for (int j = 0; j < NumHorizontalCells; j++)
+			{
+				if (CellList[i][j]->HasLadder())
+				{
+					noofobj++;
+				}
+			}
+		}
+
+	}
+	if (type == 2)
+	{
+
+		for (int i = NumVerticalCells - 1; i >= 0; i--)
+		{
+			for (int j = 0; j < NumHorizontalCells; j++)
+			{
+				if (CellList[i][j]->HasSnake())
+				{
+					noofobj++;
+				}
+			}
+		}
+
+	}
+	if (type == 3)
+	{
+
+		for (int i = NumVerticalCells - 1; i >= 0; i--)
+		{
+			for (int j = 0; j < NumHorizontalCells; j++)
+			{
+				if (CellList[i][j]->HasCard())
+				{
+					noofobj++;
+				}
+			}
+		}
+
+	}
+	for (int i = NumVerticalCells - 1; i >= 0; i--) 
+	{
+		for (int j = 0; j < NumHorizontalCells; j++) 
+		{
+			if (CellList[i][j]->GetGameObject())
+			{
+				(CellList[i][j]->GetGameObject())->Save(OutFile,type,noofobj);
+			}
+		}
+	}
+}
+
 
 Grid::~Grid()
 {

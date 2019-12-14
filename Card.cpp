@@ -37,6 +37,26 @@ void Card::Apply(Grid* pGrid, Player* pPlayer)
 	pGrid->PrintErrorMessage("You have reached card " + to_string(cardNumber) + ". Click to continue ...");
 }
 
+void Card::Save(ofstream& OutFile, int type, int& noofobj)
+{
+	if (OutFile.is_open())
+	{
+		if (noofobj != -1)
+		{
+			OutFile << noofobj << endl;
+			noofobj = -1;
+		}
+		if (type == 3)
+		{
+			CellPosition CellPos = GetPosition();
+			OutFile << cardNumber << " " << CellPos.GetCellNum();
+
+		}
+	}
+	return;
+
+}
+
 Card::~Card()
 {
 }

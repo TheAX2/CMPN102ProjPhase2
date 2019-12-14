@@ -31,7 +31,13 @@ void AddLadderAction::ReadActionParameters()
     
 
 	///TODO: Make the needed validations on the read parameters
-
+	if (startPos.GetCellNum() >= endPos.GetCellNum() || startPos.HCell() != endPos.HCell())
+	{
+		CellPosition InVal(-1, -1);
+		endPos = InVal;
+		startPos = InVal;
+		
+	}
 	
 
 	// Clear messages

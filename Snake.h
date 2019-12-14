@@ -19,5 +19,7 @@ public:
 
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
 
+	virtual void Save(ofstream&, int type, int &noofobj);
+
 	virtual ~Snake(); // Virtual destructor
 };

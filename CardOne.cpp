@@ -54,3 +54,11 @@ void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 	int w = pPlayer->GetWallet();
 	pPlayer->SetWallet(w - walletAmount);
 }
+
+void CardOne::Save(ofstream& OutFile,int type,int &noofobj)
+{
+	int a = -1;
+	Card::Save(OutFile,3,a);
+	OutFile.open("save.txt", ios::app);
+	OutFile << " " << walletAmount << endl ;
+}

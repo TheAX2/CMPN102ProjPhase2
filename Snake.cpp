@@ -35,6 +35,23 @@ CellPosition Snake::GetEndPosition() const
 	return endCellPos;
 }
 
+void Snake::Save(ofstream& OutFile, int type, int &noofobj)
+{
+	if (OutFile.is_open())
+	{
+		if (noofobj!=-1)
+		{
+			OutFile << noofobj << endl;
+			noofobj = -1;
+		}
+		if (type == 2) {
+			CellPosition StartCell = GetPosition();
+			OutFile << StartCell.GetCellNum() << " " << endCellPos.GetCellNum() << endl;
+		}
+	}
+	return;
+}
+
 Snake::~Snake()
 {
 }

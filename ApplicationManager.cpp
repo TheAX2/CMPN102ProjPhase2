@@ -7,6 +7,7 @@
 #include "RollDiceAction.h"
 #include "InputDiceValueAction.h"
 #include "SwitchModeAction.h"
+#include "SaveGridAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -70,6 +71,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_CARD:
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);
+		break;
+
+	case SAVE_GRID:
+
+		pAct = new SaveGridAction(this);
 		break;
 
 	case EXIT:

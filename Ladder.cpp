@@ -1,10 +1,12 @@
 #include "Ladder.h"
+#include "Grid.h"
 
 Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPos) : GameObject(startCellPos)
 {
 	this->endCellPos = endCellPos;
 
 	///TODO: Do the needed validation
+	
 }
 
 void Ladder::Draw(Output* pOut) const
@@ -33,6 +35,26 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 CellPosition Ladder::GetEndPosition() const
 {
 	return endCellPos;
+}
+
+void Ladder::Save(ofstream& OutFile, int type, int& noofobj )
+{
+	if (OutFile.is_open())
+	{
+		if (noofobj != -1)
+		{
+			OutFile << noofobj << endl;
+			noofobj = -1;
+		}
+		if (type == 1)
+		{
+
+			CellPosition StartCell = GetPosition();
+			OutFile << StartCell.GetCellNum() << " " << endCellPos.GetCellNum() << endl;
+
+		}
+	}
+	return;
 }
 
 Ladder::~Ladder()

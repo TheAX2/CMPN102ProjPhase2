@@ -17,6 +17,8 @@ void InputDiceValueAction::ReadActionParameters()
 	int DV = pIn->GetInteger(pOut);
 	if (DV < 1 || DV>6)
 	{
+		DiceValue = 0;
+		pOut->ClearStatusBar();
 		return;
 	}
 	DiceValue = DV;
@@ -31,6 +33,11 @@ void InputDiceValueAction::Execute()
 	Grid* pGrid = pManager->GetGrid();
 
 	ReadActionParameters();
+
+	if (DiceValue==0)
+	{
+		return;
+	}
 
 	if (!pGrid->GetEndGame()) {
 		
