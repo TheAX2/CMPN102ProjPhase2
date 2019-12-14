@@ -6,6 +6,7 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 {
 	this->pCell = pCell;
 	this->turnCount = 0;
+	effect = 0;
 
 	// Make all the needed initialization or validations
 }
@@ -43,6 +44,20 @@ int Player::GetjustRolledDiceNum() const
 	return justRolledDiceNum;
 }
 
+int Player::Geteffect() const
+{
+	return effect;
+}
+
+void Player::Seteffect(int e)
+{
+	effect = e;
+}
+
+int Player::GetplayerNum() const
+{
+	return playerNum;
+}
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const
@@ -77,8 +92,26 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
-	turnCount ++;
+	
+	turnCount++;
 
+	switch (Geteffect())
+	{
+	case 0:
+		break;
+	case 1:
+		turnCount--;
+		Seteffect(0); //this effect lasts only one roll
+		break;
+	case 2:
+		diceNumber = 0;
+		Seteffect(0); //this effect only lasts 1 turn
+	}
+
+	
+
+
+	
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
 	if (turnCount == 3)
@@ -109,7 +142,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		GetCell()->GetGameObject()->Apply(pGrid, this);}
 	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
 	
-	if ((pCell->GetCellPosition()).GetCellNum() > 99)
+	if ((pCell->GetCellPosition()).GetCellNum() == 99)
 	{
 		pGrid->SetEndGame(true);
 	}

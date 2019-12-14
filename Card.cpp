@@ -1,6 +1,12 @@
 #include "Card.h"
 #include "CardOne.h"
-
+#include "CardTwo.h"
+#include "CardThree.h"
+#include "CardFour.h"
+#include "CardFive.h"
+#include "CardSix.h"
+#include "CardSeven.h"
+#include "CardEight.h"
 
 Card::Card(const CellPosition & pos) : GameObject(pos) // sets the cell position of the GameObject
 {
@@ -87,44 +93,57 @@ void Card::Load(ifstream& InFile, Grid* pGrid)
 				pCard = new CardOne(cardPosition);
 				pCard->Load(InFile,pGrid);
 				break;
-			/*case 2:
+			case 2:
 				pCard = new CardTwo(cardPosition);
+				pCard->Load(InFile, pGrid);
 				break;
 			case 3:
 				pCard = new CardThree(cardPosition);
+				pCard->Load(InFile,pGrid);
 				break;
 			case 4:
 				pCard = new CardFour(cardPosition);
+				pCard->Load(InFile,pGrid);
 				break;
 			case 5:
 				pCard = new CardFive(cardPosition);
+				pCard->Load(InFile,pGrid);
 				break;
 			case 6:
 				pCard = new CardSix(cardPosition);
+				pCard->Load(InFile,pGrid);
 				break;
 			case 7:
 				pCard = new CardSeven(cardPosition);
+				pCard->Load(InFile,pGrid);
 				break;
 			case 8:
 				pCard = new CardEight(cardPosition);
+				pCard->Load(InFile,pGrid);
 				break;
-			case 9:
+			/*case 9:
 				pCard = new CardNine(cardPosition);
+				pCard->Load(InFile,pGrid);
 				break;
 			case 10:
 				pCard = new CardTenToFourteen(cardPosition);
+				pCard->Load(InFile,pGrid);
 				break;
 			case 11:
 				pCard = new CardTenToFourteen(cardPosition);
+				pCard->Load(InFile,pGrid);
 				break;
 			case 12:
 				pCard = new CardTenToFourteen(cardPosition);
+				pCard->Load(InFile,pGrid);
 				break;
 			case 13:
 				pCard = new CardTenToFourteen(cardPosition);
+				pCard->Load(InFile,pGrid);
 				break;
 			case 14:
 				pCard = new CardTenToFourteen(cardPosition);
+				pCard->Load(InFile,pGrid);
 				break;*/
 
 			}

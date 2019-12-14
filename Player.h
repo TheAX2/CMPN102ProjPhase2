@@ -16,6 +16,9 @@ class Player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
 	                       // and reset again when reached 3
 	                       // it is used to indicate when to move and when to add to your wallet
+
+	int effect;           //Add effects to the player, each number correspondes to a different effect ->
+	                      //0: No Effect      1: Freeze turn count.    2: Forces the Player to Roll a Zero
 	
 public:
 
@@ -31,6 +34,9 @@ public:
 
 	int GetTurnCount() const;		// A getter for the turnCount
 	int GetjustRolledDiceNum() const; // A: A getter for the justRolledDiceNum
+	int Geteffect() const;
+	void Seteffect(int);
+	int GetplayerNum() const;
 
 	///TODO: You can add setters and getters for data members here (if needed)
 
