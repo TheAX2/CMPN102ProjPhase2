@@ -206,13 +206,13 @@ void Player::Move(Grid * pGrid, int diceNumber)
 					{
 						pGrid->PrintErrorMessage("Attack already used, use a different attack");
 						pOut->PrintMessage("Choose an attack: Enter 0 for an ice attack, 1 for a fire attack, 2 for a poison attack, 3 for a lightning attack .");
-						int atknum = pIn->GetInteger(pOut);
+						atknum = pIn->GetInteger(pOut);
 					}
 					if (atknum < 0 || atknum>3)
 					{
 						pGrid->PrintErrorMessage("Invalid entry ...");
 						pOut->PrintMessage("Choose an attack: Enter 0 for an ice attack, 1 for a fire attack, 2 for a poison attack, 3 for a lightning attack .");
-						int atknum = pIn->GetInteger(pOut);
+						atknum = pIn->GetInteger(pOut);
 					}
 				}
 				
@@ -240,7 +240,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 				{
 					pGrid->PrintErrorMessage("That is not a valid target");
 					pOut->PrintMessage("Now enter the player number to attack !!!");
-					int target = pIn->GetInteger(pOut);
+					target = pIn->GetInteger(pOut);
 				}
 				
 				if (atknum!=3)
