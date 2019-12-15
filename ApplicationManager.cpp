@@ -10,6 +10,7 @@
 #include "SaveGridAction.h"
 #include "LoadGridAction.h"
 #include "NewGameAction.h"
+#include "DeleteGameObjectAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -73,6 +74,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_CARD:
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);
+		break;
+
+	case DELETE_GAME_OBJECT:
+
+		pAct = new DeleteGameObjectAction(this);
 		break;
 
 	case SAVE_GRID:
