@@ -37,6 +37,7 @@ public:
 	int Geteffect() const;
 	void Seteffect(int);
 	int GetplayerNum() const;
+	void SetTurnCount(int);
 
 	///TODO: You can add setters and getters for data members here (if needed)
 

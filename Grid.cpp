@@ -221,6 +221,22 @@ void Grid::UpdateInterface() const
 	}
 }
 
+void Grid::CleanInterface()
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--) // bottom up
+	{
+		for (int j = 0; j < NumHorizontalCells; j++) // left to right
+		{
+			if (CellList[i][j]->GetGameObject())
+			{
+				RemoveObjectFromCell(CellList[i][j]->GetCellPosition());
+			}
+		}
+	}
+
+	UpdateInterface();
+}
+
 void Grid::PrintErrorMessage(string msg)
 {
 	pOut->PrintMessage(msg);

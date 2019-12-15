@@ -36,6 +36,10 @@ void LoadGridAction::Execute()
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 	ReadActionParameters();
+
+	//
+	pGrid->CleanInterface();
+	//
 	ifstream InFile;
 	InFile.open(filename, ios::in);
 	if (InFile.is_open())

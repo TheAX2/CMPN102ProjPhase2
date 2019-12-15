@@ -8,6 +8,11 @@
 #include "CardSeven.h"
 #include "CardEight.h"
 #include "CardNine.h"
+#include "CardTen.h"
+#include "CardEleven.h"
+#include "CardTwelve.h"
+#include "CardThirteen.h"
+#include "CardFourteen.h"
 
 Card::Card(const CellPosition & pos) : GameObject(pos) // sets the cell position of the GameObject
 {
@@ -126,26 +131,26 @@ void Card::Load(ifstream& InFile, Grid* pGrid)
 				pCard = new CardNine(cardPosition);
 				pCard->Load(InFile,pGrid);
 				break;
-			/*case 10:
-				pCard = new CardTenToFourteen(cardPosition);
+			case 10:
+				pCard = new CardTen(cardPosition);
 				pCard->Load(InFile,pGrid);
 				break;
 			case 11:
-				pCard = new CardTenToFourteen(cardPosition);
+				pCard = new CardEleven(cardPosition);
 				pCard->Load(InFile,pGrid);
 				break;
 			case 12:
-				pCard = new CardTenToFourteen(cardPosition);
+				pCard = new CardTwelve(cardPosition);
 				pCard->Load(InFile,pGrid);
 				break;
 			case 13:
-				pCard = new CardTenToFourteen(cardPosition);
+				pCard = new CardThirteen(cardPosition);
 				pCard->Load(InFile,pGrid);
 				break;
 			case 14:
-				pCard = new CardTenToFourteen(cardPosition);
+				pCard = new CardFourteen(cardPosition);
 				pCard->Load(InFile,pGrid);
-				break;*/
+				break;
 
 			}
 			if (pCard)
