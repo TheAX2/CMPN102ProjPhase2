@@ -19,7 +19,17 @@ class Player
 
 	int effect;           //Add effects to the player, each number correspondes to a different effect ->
 	                      //0: No Effect      1: Freeze turn count.    2: Forces the Player to Roll a Zero
+
+	bool attackeffect[3];     //Add effects to player as a result of getting attacked each element of the array corresponds to an effect
+	                         //0:Frozen     1: burned    2:poisoned
 	
+	int attackcount;      //number of attacks launched
+	int attackused;      //specifies which attack he already used if any
+
+	int burncount;
+	int poisoncount;
+
+
 public:
 
 	Player(Cell * pCell, int playerNum); // Constructor making any needed initializations
@@ -38,6 +48,9 @@ public:
 	void Seteffect(int);
 	int GetplayerNum() const;
 	void SetTurnCount(int);
+	void Setattackeffect(bool , int);
+	void Setburncount(int);
+	void Setpoisoncount(int);
 
 	///TODO: You can add setters and getters for data members here (if needed)
 
