@@ -40,6 +40,7 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 		pPlayer->Seteffect(2); // Effect 2 forces the player to roll a zero
 	}
 	else {
+		
 		playert[pPlayer->GetplayerNum()] = NULL;
 	}
 	

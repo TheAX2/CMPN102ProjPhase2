@@ -95,7 +95,8 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
-
+	Input* pIn = pGrid->GetInput();
+	Output* pOut = pGrid->GetOutput();
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
 	
 	turnCount++;
@@ -109,6 +110,9 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		Seteffect(0); //this effect lasts only one roll
 		break;
 	case 2:
+		pOut->PrintMessage("You are denied from playing this turn. Click to continue...");
+		pIn->GetCellClicked();
+		pOut->ClearStatusBar();
 		diceNumber = 0;
 		Seteffect(0); //this effect only lasts 1 turn
 	}
