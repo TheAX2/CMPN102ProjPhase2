@@ -84,6 +84,24 @@ void Snake::Load(ifstream& InFile, Grid* pGrid)
 	return;
 }
 
+bool Snake::IsOverlappingsnake(GameObject* pGObj)
+{
+	if (Snake* flag = dynamic_cast<Snake*>(pGObj))
+	{
+		if (GetPosition().HCell() == flag->GetPosition().HCell())
+		{
+			for (int i = endCellPos.GetCellNum(); i < GetPosition().GetCellNum();i++)
+			{
+				if (i == flag->GetPosition().GetCellNum() || i == flag->GetEndPosition().GetCellNum())
+				{
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
 Snake::~Snake()
 {
 }

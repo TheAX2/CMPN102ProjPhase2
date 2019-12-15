@@ -23,5 +23,7 @@ public:
 
 	virtual void Load(ifstream& InFile, Grid* pGrid);
 
+	bool IsOverlappingsnake(GameObject*);
+
 	virtual ~Snake(); // Virtual destructor
 };

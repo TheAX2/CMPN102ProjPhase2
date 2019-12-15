@@ -37,6 +37,24 @@ CellPosition Ladder::GetEndPosition() const
 	return endCellPos;
 }
 
+bool Ladder::IsOverlappingladder(GameObject * pGObj)
+{
+	if (Ladder * flag = dynamic_cast<Ladder*>(pGObj))
+	{
+		if (GetPosition().HCell() == flag->GetPosition().HCell())
+		{
+			for (int i = GetPosition().GetCellNum(); i < endCellPos.GetCellNum();i++)
+			{
+				if (i == flag->GetPosition().GetCellNum() || i == flag->GetEndPosition().GetCellNum())
+				{
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
 void Ladder::Save(ofstream& OutFile, int type, int& noofobj )
 {
 	if (OutFile.is_open())

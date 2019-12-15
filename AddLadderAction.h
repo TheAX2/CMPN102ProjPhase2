@@ -9,6 +9,7 @@ class AddLadderAction : public Action
 	// [Action Parameters]
 	CellPosition startPos; // 1- The start position of the ladder
 	CellPosition endPos;   // 2- The end position of the ladder
+	string errormsg;
 
 	// Note: These parameters should be read in ReadActionParameters()
 

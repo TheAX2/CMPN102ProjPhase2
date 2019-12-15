@@ -22,6 +22,8 @@ public:
 
 	virtual void Load(ifstream&,Grid* pGrid);
 
+	bool IsOverlappingladder(GameObject *);
+
 	virtual ~Ladder(); // Virtual destructor
 };
 

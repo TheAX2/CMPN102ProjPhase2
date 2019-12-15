@@ -8,6 +8,7 @@ class AddSnakeAction : public Action
 	// [Action Parameters]
 	CellPosition startPos; // 1- The start position of the snake
 	CellPosition endPos;   // 2- The end position of the snake
+	string errormsg;
 
 	// Note: These parameters should be read in ReadActionParameters()
 

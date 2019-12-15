@@ -325,6 +325,96 @@ void Grid::SaveAll(ofstream& OutFile, int type)
 	}
 }
 
+bool Grid::IsOverLapping(GameObject* pGObj)
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			
+			if (GameObject * test = CellList[i][j]->GetGameObject())
+			{
+				if (Ladder* flag = dynamic_cast<Ladder*>(pGObj))
+				{
+					if (Ladder* testflag = dynamic_cast<Ladder*>(test))
+					{
+						if (flag->IsOverlappingladder(testflag))
+						{
+							return true;
+						}
+					}
+				}
+
+				if (GameObject* test = CellList[i][j]->GetGameObject())
+				{
+					if (Snake* flag = dynamic_cast<Snake*>(pGObj))
+					{
+						if (Snake* testflag = dynamic_cast<Snake*>(test))
+						{
+							if (flag->IsOverlappingsnake(testflag))
+							{
+								return true;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return false;
+}
+
+int Grid::IsEndOfLadderStart(Ladder* pLadder)
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			if (CellList[i][j]->HasSnake())
+			{
+				if (pLadder->GetEndPosition().GetCellNum() == CellList[i][j]->GetGameObject()->GetPosition().GetCellNum())
+				{
+					return 1;
+				}
+			}
+			if (CellList[i][j]->HasLadder())
+			{
+				if (pLadder->GetEndPosition().GetCellNum() == CellList[i][j]->GetGameObject()->GetPosition().GetCellNum())
+				{
+					return 2;
+				}
+			}
+		}
+	}
+
+	return 0;
+}
+
+int Grid::IsEndOfSnakeStart(Snake* pSnake)
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			if (CellList[i][j]->HasSnake())
+			{
+				if (pSnake->GetEndPosition().GetCellNum() == CellList[i][j]->GetGameObject()->GetPosition().GetCellNum())
+				{
+					return 1;
+				}
+			}
+			if (CellList[i][j]->HasLadder())
+			{
+				if (pSnake->GetEndPosition().GetCellNum() == CellList[i][j]->GetGameObject()->GetPosition().GetCellNum())
+				{
+					return 2;
+				}
+			}
+		}
+	}
+
+	return 0;
+}
 
 Grid::~Grid()
 {

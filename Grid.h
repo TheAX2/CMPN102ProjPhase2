@@ -85,6 +85,13 @@ public:
 
 	void SaveAll(ofstream& OutFile,int type);
 
+	bool IsOverLapping(GameObject* pGobj);
+
+	int IsEndOfLadderStart(Ladder*);   //checks if endcellpos is a start of a ladder or snake;
+	                                  //0 means nothing at the end, 1 means snake at the end, 2 means ladder at the end
+
+	int IsEndOfSnakeStart(Snake*);
+
 	~Grid(); // A destructor for any needed deallcations
 };
 
