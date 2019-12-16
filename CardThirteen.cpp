@@ -5,8 +5,7 @@ bool CardThirteen::isBought = 0;
 int CardThirteen::CardPrice = 0;
 int CardThirteen::Fees = 0;
 Player* CardThirteen::cardOwner = NULL;
-bool CardThirteen::saved = false;
-bool CardThirteen::loaded = false;
+
 
 CardThirteen::CardThirteen(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {

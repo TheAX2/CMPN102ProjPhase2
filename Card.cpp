@@ -15,6 +15,8 @@
 #include "CardFourteen.h"
 
 bool Card::Editing = false;
+bool Card::saved = false;
+bool Card::loaded = false;
 
 Card::Card(const CellPosition & pos) : GameObject(pos) // sets the cell position of the GameObject
 {
@@ -39,6 +41,17 @@ void Card::SetEditing(bool b)
 {
 	Editing = b;
 }
+
+void Card::Setsaved(bool b)
+{
+	saved = b;
+}
+
+void Card::Setloaded(bool b)
+{
+	loaded = b;
+}
+
 
 void Card::Draw(Output* pOut) const
 {

@@ -12,6 +12,8 @@ class Card : public GameObject
 protected:
 	int cardNumber; // an integer representing the card number
 	static bool Editing;
+	static bool saved;
+	static bool loaded;
 
 public:
 	Card(const CellPosition & pos); // A Constructor for card that takes the cell position of it
@@ -20,6 +22,8 @@ public:
 	int GetCardNumber();            // The getter of card number
 
 	void SetEditing(bool);
+	void Setsaved(bool);
+	void Setloaded(bool);
 
 	void Setposition(CellPosition);
 

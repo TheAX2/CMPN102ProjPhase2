@@ -60,6 +60,7 @@ void Ladder::Save(ofstream& OutFile, int type, int& noofobj )
 	if (OutFile.is_open())
 	{
 		
+		// This condition is added in case no ladders
 		if (noofobj == 0)
 		{
 			OutFile << noofobj << endl;
@@ -69,21 +70,14 @@ void Ladder::Save(ofstream& OutFile, int type, int& noofobj )
 		
 		if (type == 1)
 		{
+			// to make sure no of the objects is only printed once
 			if (noofobj != -1)
 			{
 				OutFile << noofobj << endl;
-				
-				if (noofobj==0)
-				{
-					OutFile << noofobj << endl;
-					noofobj = -1;
-					return;
-				}
 				noofobj = -1;
 			}
 			CellPosition StartCell = GetPosition();
 			OutFile << StartCell.GetCellNum() << " " << endCellPos.GetCellNum() << endl;
-
 		}
 	}
 	return;
@@ -94,7 +88,7 @@ void Ladder::Load(ifstream& InFile,Grid* pGrid)
 	if (InFile.is_open())
 	{
 		int noofobj;
-		InFile >> noofobj;
+		InFile >> noofobj;                  // first we read the number of objects to start the loop
 		for (int i = 0;i < noofobj;i++)
 		{
 			int startCell, endCell;

@@ -103,6 +103,114 @@ void Player::Settozero(Grid* pGrid)
 
 }
 
+void Player::attack(Grid* pGrid)
+{
+	Input* pIn = pGrid->GetInput();
+	Output* pOut = pGrid->GetOutput();
+
+	attackcount++;
+	pOut->PrintMessage("Choose an attack: Enter 0 for an ice attack, 1 for a fire attack, 2 for a poison attack, 3 for a lightning attack .");
+	int atknum = pIn->GetInteger(pOut);
+	while (atknum == attackused || atknum < 0 || atknum>3)
+	{
+		if (atknum == attackused)
+		{
+			pGrid->PrintErrorMessage("Attack already used, use a different attack");
+			pOut->PrintMessage("Choose an attack: Enter 0 for an ice attack, 1 for a fire attack, 2 for a poison attack, 3 for a lightning attack .");
+			atknum = pIn->GetInteger(pOut);
+		}
+		if (atknum < 0 || atknum>3)
+		{
+			pGrid->PrintErrorMessage("Invalid entry ...");
+			pOut->PrintMessage("Choose an attack: Enter 0 for an ice attack, 1 for a fire attack, 2 for a poison attack, 3 for a lightning attack .");
+			atknum = pIn->GetInteger(pOut);
+		}
+	}
+
+	attackused = atknum;
+	int plyratking = playerNum;
+	if (atknum == 3)
+	{
+		for (int i = 0; i < MaxPlayerCount;i++)
+		{
+			pGrid->AdvanceCurrentPlayer();
+			if (pGrid->GetCurrentPlayer()->GetplayerNum() != plyratking)
+			{
+				pGrid->GetCurrentPlayer()->SetWallet(pGrid->GetCurrentPlayer()->GetWallet() - 20);
+			}
+		}
+		pOut->PrintMessage("You used Lightning !");
+		pIn->GetCellClicked();
+		pOut->ClearStatusBar();
+		return;
+
+	}
+	pOut->PrintMessage("Now enter the player number to attack !!!");
+	int target = pIn->GetInteger(pOut);
+	while (target == playerNum || target < 0 || target >3)
+	{
+		pGrid->PrintErrorMessage("That is not a valid target");
+		pOut->PrintMessage("Now enter the player number to attack !!!");
+		target = pIn->GetInteger(pOut);
+	}
+
+	if (atknum != 3)
+	{
+		for (int i = 0; i < MaxPlayerCount;i++)
+		{
+			pGrid->AdvanceCurrentPlayer();
+			if (pGrid->GetCurrentPlayer()->GetplayerNum() == target)
+			{
+				pGrid->GetCurrentPlayer()->Setattackeffect(true, atknum);
+				if (atknum == 1)
+				{
+					pGrid->GetCurrentPlayer()->Setburncount(3);
+				}
+				if (atknum == 2)
+				{
+					pGrid->GetCurrentPlayer()->Setpoisoncount(5);
+				}
+				for (int j = 0;j < MaxPlayerCount;j++)
+				{
+					pGrid->AdvanceCurrentPlayer();
+					if (pGrid->GetCurrentPlayer()->GetplayerNum() == plyratking)
+					{
+						break;
+					}
+				}
+				break;
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; i < MaxPlayerCount;i++)
+		{
+			pGrid->AdvanceCurrentPlayer();
+			if (pGrid->GetCurrentPlayer()->GetplayerNum() != plyratking)
+			{
+				pGrid->GetCurrentPlayer()->SetWallet(pGrid->GetCurrentPlayer()->GetWallet() - 20);
+			}
+		}
+	}
+	switch (atknum)
+	{
+	case 0:
+		pOut->PrintMessage("You used Ice !");
+		pIn->GetCellClicked();
+		break;
+	case 1:
+		pOut->PrintMessage("You used Fire !");
+		pIn->GetCellClicked();
+		break;
+	case 2:
+		pOut->PrintMessage("You used Poison !");
+		pIn->GetCellClicked();
+		break;
+
+	}
+
+}
 
 // ====== Drawing Functions ======
 

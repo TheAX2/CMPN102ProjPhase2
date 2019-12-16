@@ -134,6 +134,10 @@ CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
 void CellPosition::AddCellNum(int addedNum)
 {
 	int newcellnumber = GetCellNum() + addedNum;
+	if (newcellnumber > 99)
+	{
+		newcellnumber = 99;
+	}
 	CellPosition temp = GetCellPositionFromNum(newcellnumber);
 	SetVCell(temp.VCell()) ;
 	SetHCell(temp.HCell()) ;

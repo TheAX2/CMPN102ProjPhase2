@@ -10,8 +10,7 @@ class CardThirteen : public Card
 	static bool Exists13;
 	static bool isBought;
 	static Player* cardOwner;
-	static bool saved;
-	static bool loaded;
+
 public:
 	CardThirteen(const CellPosition& pos); // A Constructor takes card position
 

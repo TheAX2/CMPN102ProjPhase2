@@ -45,7 +45,7 @@ void LoadGridAction::Execute()
 	if (InFile.is_open())
 	{
 		
-		CellPosition s, e;
+		CellPosition s, e;                 // Dummy cellpositions to intilize dummy game objects to run the load functions needed
 		Ladder* pLadder = new Ladder(s,e);
 		pLadder->Load(InFile,pGrid);
 		Snake* pSnake = new Snake(s, e);
@@ -54,6 +54,8 @@ void LoadGridAction::Execute()
 		pCard->Load(InFile, pGrid);
 		InFile.close();
 	}
+	Card* c = new Card(1);
+	c->Setloaded(false);  // Used the dummy card c to return all cards to non-loaded state after loading to avoid errors when double saving
 	pOut->ClearStatusBar();
 
 }

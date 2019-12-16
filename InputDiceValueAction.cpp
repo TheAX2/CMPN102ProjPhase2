@@ -12,7 +12,10 @@ void InputDiceValueAction::ReadActionParameters()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-
+	if (pGrid->GetEndGame())
+	{
+		return;
+	}
 	pOut->PrintMessage("please enter a dice value between 1-6");
 	int DV = pIn->GetInteger(pOut);
 	if (DV < 1 || DV>6)

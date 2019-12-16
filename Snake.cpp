@@ -45,17 +45,12 @@ void Snake::Save(ofstream& OutFile, int type, int &noofobj)
 			noofobj = -1;
 			return;
 		}
-		if (type == 2) {
+		// to make sure no of the objects is only printed once
+		if (type == 2)
+		{
 			if (noofobj != -1)
 			{
 				OutFile << noofobj << endl;
-				
-				if (noofobj==0)
-				{
-					OutFile << noofobj << endl;
-					noofobj = -1;
-					return;
-				}
 				noofobj = -1;
 			}
 			CellPosition StartCell = GetPosition();
@@ -70,7 +65,7 @@ void Snake::Load(ifstream& InFile, Grid* pGrid)
 	if (InFile.is_open())
 	{
 		int noofobj;
-		InFile >> noofobj;
+		InFile >> noofobj;// first we read the number of objects to start the loop
 		for (int i = 0;i < noofobj;i++)
 		{
 			int startCell, endCell;

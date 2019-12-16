@@ -53,6 +53,8 @@ public:
 	void Setpoisoncount(int);
 	void Settozero(Grid* pGrid);
 
+	void attack(Grid*);
+
 	///TODO: You can add setters and getters for data members here (if needed)
 
 	// ====== Drawing Functions ======

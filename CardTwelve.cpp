@@ -5,8 +5,7 @@ bool CardTwelve::isBought = 0;
 int CardTwelve::CardPrice = 0;
 int CardTwelve::Fees = 0;
 Player* CardTwelve::cardOwner = NULL;
-bool CardTwelve::saved = false;
-bool CardTwelve::loaded = false;
+
 
 CardTwelve::CardTwelve(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {

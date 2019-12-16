@@ -275,7 +275,9 @@ void Grid::PrintErrorMessage(string msg)
 void Grid::SaveAll(ofstream& OutFile, int type)
 {
 	
-	int noofobj = 0;
+	int noofobj = 0;      // intialize variable to count the number of objects
+
+	                      // Switch case to determine which game pbject we will be woking on
 	switch (type)
 	{
 	case 1:
@@ -289,13 +291,6 @@ void Grid::SaveAll(ofstream& OutFile, int type)
 				}
 			}
 		}
-
-		/*if (noofobj == 0)
-		{
-			(CellList[1][1]->GetGameObject())->Save(OutFile, type, noofobj);
-			return;
-		}*/
-
 		break;
 	case 2:
 		for (int i = NumVerticalCells - 1; i >= 0; i--)
@@ -308,13 +303,6 @@ void Grid::SaveAll(ofstream& OutFile, int type)
 				}
 			}
 		}
-
-
-		/*if (noofobj == 0)
-		{
-			(CellList[1][1]->GetGameObject())->Save(OutFile, type, noofobj);
-			return;
-		}*/
 		break;
 	case 3:
 
@@ -328,17 +316,9 @@ void Grid::SaveAll(ofstream& OutFile, int type)
 				}
 			}
 		}
-
-
-		/*if (noofobj == 0)
-		{
-			(CellList[1][1]->GetGameObject())->Save(OutFile, type, noofobj);
-			return;
-		}*/
-
 		break;
-
 	}
+
 
 	for (int i = NumVerticalCells - 1; i >= 0; i--) 
 	{

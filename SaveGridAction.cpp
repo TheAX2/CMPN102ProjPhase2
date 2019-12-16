@@ -18,7 +18,7 @@ void SaveGridAction::ReadActionParameters()
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
-	pOut->PrintMessage("Enter Save File Name ....");
+	pOut->PrintMessage("Enter Save File Name ...."); // Get the file name and store it
 	filename = pIn->GetSrting(pOut);
 
 	pOut->PrintMessage("Saving Current Grid .....");
@@ -30,10 +30,8 @@ void SaveGridAction::Execute()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-	ReadActionParameters();
+	ReadActionParameters();               // first read parameters to get and set the filname
 	ofstream OutFile(filename,ios::out);
-	OutFile.close();
-	OutFile.open(filename,ios::app);
 	if (OutFile.is_open())
 	{
 		
@@ -41,7 +39,10 @@ void SaveGridAction::Execute()
 		pGrid->SaveAll(OutFile, 2);
 		pGrid->SaveAll(OutFile, 3);
 		OutFile.close();
+
 	}
+	Card* c = new Card(1);
+	c->Setsaved(false);     // Used the dummy card c to return all cards to non-saved state after saving to avoid errors when double saving
 	pOut->ClearStatusBar();
 
 }

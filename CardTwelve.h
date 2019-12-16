@@ -8,8 +8,6 @@ class CardTwelve : public Card
 	static bool Exists12;
 	static bool isBought;
 	static Player* cardOwner;
-	static bool saved;
-	static bool loaded;
 
 public:
 	CardTwelve(const CellPosition& pos); // A Constructor takes card position
