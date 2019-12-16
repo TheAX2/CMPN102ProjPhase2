@@ -51,6 +51,7 @@ public:
 	void Setattackeffect(bool , int);
 	void Setburncount(int);
 	void Setpoisoncount(int);
+	void Settozero(Grid* pGrid);
 
 	///TODO: You can add setters and getters for data members here (if needed)
 

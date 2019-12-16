@@ -15,6 +15,11 @@ CardEleven::CardEleven(const CellPosition& pos) : Card(pos) // set the cell posi
 	cardNumber = 11; // set the inherited cardNumber data member with the card number (11 here)
 }
 
+void CardEleven::ResetBought()
+{
+	isBought == 0;
+}
+
 
 void CardEleven::ReadCardParameters(Grid* pGrid)
 {
@@ -24,7 +29,7 @@ void CardEleven::ReadCardParameters(Grid* pGrid)
 
 	//a Static data member to make sure that the parameters of cardEleven has been entered once
 	//The parameters of any Card must be entered only at the first time the user adds this card
-	if (Exists11) {
+	if (Exists11 && !Editing) {
 		return;
 	}
 

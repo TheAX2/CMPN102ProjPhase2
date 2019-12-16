@@ -11,6 +11,10 @@
 #include "LoadGridAction.h"
 #include "NewGameAction.h"
 #include "DeleteGameObjectAction.h"
+#include "PasteCardAction.h"
+#include "CopyCardAction.h"
+#include "CutCardAction.h"
+#include "EditCardAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -74,6 +78,22 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_CARD:
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);
+		break;
+
+	case COPY_CARD:
+		pAct = new CopyCardAction(this);
+		break;
+
+	case PASTE_CARD:
+		pAct = new PasteCardAction(this);
+		break;
+
+	case CUT_CARD:
+		pAct = new CutCardAction(this);
+		break;
+
+	case EDIT_CARD:
+		pAct = new EditCardAction(this);
 		break;
 
 	case DELETE_GAME_OBJECT:

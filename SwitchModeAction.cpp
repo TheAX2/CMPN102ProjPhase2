@@ -1,4 +1,5 @@
 #include "SwitchModeAction.h"
+#include "NewGameAction.h"
 
 
 
@@ -24,6 +25,8 @@ void SwitchModeAction::Execute()
 	{
 		
 		pOut->CreatePlayModeToolBar();
+		NewGameAction Act(pManager);
+		Act.Execute();
 		
 	}
 	else {
@@ -31,6 +34,9 @@ void SwitchModeAction::Execute()
 		pOut->CreateDesignModeToolBar();
 
 	}
+
+
+
 }
 
 SwitchModeAction::~SwitchModeAction()

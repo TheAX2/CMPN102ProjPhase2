@@ -40,13 +40,12 @@ void NewGameAction::Execute()
 	for (int i = 0;i < MaxPlayerCount;i++)
 	{
 		Player* pPlayer = pGrid->GetCurrentPlayer();
-		pGrid->UpdatePlayerCell(pPlayer,StartCell);
-		pPlayer->SetWallet(100);
-		pPlayer->SetTurnCount(0);
+		pPlayer->Settozero(pGrid);
 		pGrid->AdvanceCurrentPlayer();
 
 	}
 
+	pGrid->ResetAllBoughtCards();
 
 }
 

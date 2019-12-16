@@ -120,6 +120,33 @@ void Grid::AdvanceCurrentPlayer()
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 }
 
+void Grid::SetClipboardfromCellPos(CellPosition p)
+{
+	SetClipboard(CellList[p.VCell()][p.HCell()]->HasCard());
+}
+
+void Grid::ResetAllBoughtCards()
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--) // bottom up
+	{
+		for (int j = 0; j < NumHorizontalCells; j++) // left to right
+		{
+			if (Card * flag= CellList[i][j]->HasCard())
+			{
+				if (flag->GetCardNumber() >= 10 && flag->GetCardNumber() <= 14)
+				{
+					flag->ResetBought();
+				}
+			}
+		}
+	}
+}
+
+Card* Grid::HasCardFromCellPos(CellPosition p)
+{
+	return CellList[p.VCell()][p.HCell()]->HasCard();
+}
+
 // ========= Other Getters =========
 
 

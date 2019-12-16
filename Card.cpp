@@ -14,6 +14,8 @@
 #include "CardThirteen.h"
 #include "CardFourteen.h"
 
+bool Card::Editing = false;
+
 Card::Card(const CellPosition & pos) : GameObject(pos) // sets the cell position of the GameObject
 {
 }
@@ -28,11 +30,26 @@ int Card::GetCardNumber()
 	return cardNumber;
 }
 
+void Card::Setposition(CellPosition p)
+{
+	position = p;
+}
+
+void Card::SetEditing(bool b)
+{
+	Editing = b;
+}
+
 void Card::Draw(Output* pOut) const
 {
 
 	///TODO: call the appropriate Ouput function that draws a cell containing the "cardNumber" in "position"
 	pOut->DrawCell(position, cardNumber);
+
+}
+
+void Card::ResetBought()
+{
 
 }
 

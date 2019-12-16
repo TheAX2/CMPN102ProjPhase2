@@ -86,6 +86,22 @@ void Player::Setpoisoncount(int t)
 	poisoncount += t;
 }
 
+void Player::Settozero(Grid* pGrid)
+{
+	CellPosition StartCell(1);
+	pGrid->UpdatePlayerCell(this, StartCell);
+	SetWallet(100);
+	turnCount = 0;
+	effect = 0;
+	attackcount = 0;
+	attackeffect[0] = false;
+	attackeffect[1] = false;
+	attackeffect[2] = false;
+	attackused = -1;
+	burncount = 0;
+	poisoncount = 0;
+
+}
 
 
 // ====== Drawing Functions ======

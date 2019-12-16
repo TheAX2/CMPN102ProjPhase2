@@ -18,7 +18,7 @@ public:
 	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardThirteen which is: 
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardThirteen on the passed Player
-
+	virtual void ResetBought();
 	virtual void Save(ofstream& OutFile, int type, int& noofobj);
 	virtual void Load(ifstream& InFile, Grid* pGrid);
 
