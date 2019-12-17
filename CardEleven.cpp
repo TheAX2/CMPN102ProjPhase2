@@ -5,7 +5,8 @@ bool CardEleven::isBought = 0;
 int CardEleven::CardPrice = 0;
 int CardEleven::Fees = 0;
 Player* CardEleven::cardOwner = NULL;
-
+bool CardEleven::saved = false;
+bool CardEleven::loaded = false;
 
 
 CardEleven::CardEleven(const CellPosition& pos) : Card(pos) // set the cell position of the card
@@ -18,7 +19,14 @@ void CardEleven::ResetBought()
 {
 	isBought == 0;
 }
-
+void CardEleven::Setloaded(bool b)
+{
+	loaded = b;
+}
+void CardEleven::Setsaved(bool b)
+{
+	saved = b;
+}
 
 void CardEleven::ReadCardParameters(Grid* pGrid)
 {

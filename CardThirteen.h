@@ -10,12 +10,14 @@ class CardThirteen : public Card
 	static bool Exists13;
 	static bool isBought;
 	static Player* cardOwner;
-
+	static bool saved;
+	static bool loaded;
 public:
 	CardThirteen(const CellPosition& pos); // A Constructor takes card position
 
 	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardThirteen which is: 
-
+	virtual void Setloaded(bool);
+	virtual void Setsaved(bool);
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardThirteen on the passed Player
 	virtual void ResetBought();
 	virtual void Save(ofstream& OutFile, int type, int& noofobj);

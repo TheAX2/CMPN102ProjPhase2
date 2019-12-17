@@ -1,5 +1,11 @@
 #include "SaveGridAction.h"
 #include <fstream>
+#include "CardTen.h"
+#include "CardEleven.h"
+#include "CardTwelve.h"
+#include "CardThirteen.h"
+#include "CardFourteen.h"
+
 
 
 SaveGridAction::SaveGridAction(ApplicationManager* pApp) : Action(pApp)
@@ -41,8 +47,16 @@ void SaveGridAction::Execute()
 		OutFile.close();
 
 	}
-	Card* c = new Card(1);
-	c->Setsaved(false);     // Used the dummy card c to return all cards to non-saved state after saving to avoid errors when double saving
+	Card* c1 = new CardTen(1);
+	Card* c2 = new CardEleven(1);
+	Card* c3 = new CardTwelve(1);
+	Card* c4 = new CardThirteen(1);
+	Card* c5 = new CardFourteen(1);
+	c1->Setsaved(false);     // Used the dummy card c to return all cards to non-saved state after saving to avoid errors when double saving
+	c2->Setsaved(false);
+	c3->Setsaved(false);
+	c4->Setsaved(false);
+	c5->Setsaved(false);
 	pOut->ClearStatusBar();
 
 }

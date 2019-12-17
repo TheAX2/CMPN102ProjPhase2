@@ -3,7 +3,11 @@
 #include "Ladder.h"
 #include "Card.h"
 #include "Snake.h"
-
+#include "CardTen.h"
+#include "CardEleven.h"
+#include "CardTwelve.h"
+#include "CardThirteen.h"
+#include "CardFourteen.h"
 #include <fstream>
 
 
@@ -54,8 +58,16 @@ void LoadGridAction::Execute()
 		pCard->Load(InFile, pGrid);
 		InFile.close();
 	}
-	Card* c = new Card(1);
-	c->Setloaded(false);  // Used the dummy card c to return all cards to non-loaded state after loading to avoid errors when double saving
+	Card* c1 = new CardTen(1);
+	Card* c2 = new CardEleven(1);
+	Card* c3 = new CardTwelve(1);
+	Card* c4 = new CardThirteen(1);
+	Card* c5 = new CardFourteen(1);
+	c1->Setloaded(false);     // Used the dummy card c to return all cards to non-loaded state after loading to avoid errors when double saving
+	c2->Setloaded(false);
+	c3->Setloaded(false);
+	c4->Setloaded(false);
+	c5->Setloaded(false);
 	pOut->ClearStatusBar();
 
 }
